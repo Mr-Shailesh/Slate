@@ -5,6 +5,16 @@
 /.pnp
 .pnp.js
 
+# hide
+Checker.jsx
+Demo.jsx
+SlateDemo.jsx
+SlateDemo1.jsx
+SlateDemo2.jsx
+SlateDemo3.jsx
+wait.jsx
+
+
 # testing
 /coverage
 

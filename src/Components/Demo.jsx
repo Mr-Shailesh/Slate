@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-const Demo = () => {
+const Demo = ({ data, setData }) => {
   const [value, setValue] = useState("");
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
 
   console.log("data", data);
 

@@ -2,11 +2,31 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const addInputSlice = createSlice({
   name: "addInput",
-  initialState: { input: [] },
+  initialState: {
+    inputArr: [
+      {
+        type: "text",
+        // id: 1,
+        value: "",
+      },
+      {
+        type: "text",
+        // id: 2,
+        value: "",
+      },
+      {
+        type: "text",
+        // id: 3,
+        value: "",
+      },
+    ],
+  },
   reducers: {
-    add(state) {
-      console.log(state);
-      state.input++;
+    add(state, { type, payload }) {
+      state.inputArr.push(payload);
+    },
+    value(state, { type, payload }) {
+      state.inputArr = payload;
     },
   },
 });
