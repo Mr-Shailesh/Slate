@@ -16,7 +16,7 @@ const Body = () => {
   return (
     <div className="App-body">
       <DragNdrop />
-      {/* <Demo data={data} setData={setData} /> */}
+      {/* <Demo /> */}
       {/* <SlateDemo /> */}
       {/* <SlateDemo1 data={data} />
       <Checker data={data} /> */}

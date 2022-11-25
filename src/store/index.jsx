@@ -5,7 +5,7 @@ const store = configureStore({
   reducer: {
     addInput: addInputSlice.reducer,
   },
-  devTools: false,
+  // devTools: false,
 });
 
 export default store;

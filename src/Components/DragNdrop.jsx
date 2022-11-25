@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./DragNdrop.css";
-import Draggable from "react-draggable";
+// import Draggable from "react-draggable";
 import { MdAddBox } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { addInputActions } from "../store/addInput-slice";
@@ -8,20 +8,20 @@ import { addInputActions } from "../store/addInput-slice";
 const DragNdrop = () => {
   const data = useSelector((state) => state.addInput);
   const { inputArr } = data;
-  console.log("data", data);
+
   const dispatch = useDispatch();
 
-  console.log("inputArr", inputArr);
+  const id = Math.floor(Math.random() * 100000);
 
   const addBox = () => {
     dispatch(
       addInputActions.add({
         type: "text",
-
         value: "",
+        id,
+        column: "Not_started",
       })
     );
-    console.log("New Box Added");
   };
 
   const [arr, setArr] = useState(inputArr);
@@ -31,11 +31,9 @@ const DragNdrop = () => {
   }, [inputArr]);
 
   const handleChange = (e) => {
-    console.log("e.target", e.target);
     e.preventDefault();
     const index = e.target.id;
     const { id, value } = e.target;
-    console.log("id, value", id, value);
 
     let dem = [...arr];
     dem[index] = { ...dem[index], value: e.target.value };
@@ -46,6 +44,80 @@ const DragNdrop = () => {
     dispatch(addInputActions.value(arr));
   };
 
+  // const dragger = (e) => {
+  //   console.log("dragger", e.x, e.y);
+  // };
+
+  // const stopper = (e) => {
+  //   console.log("stopper", e);
+  // };
+  // const starter = (e) => {
+  //   console.log("starter", e);
+  // };
+
+  // const position = (e) => {
+  //   console.log("position", e);
+  // };
+
+  const onDragStart = (e, id) => {
+    e.dataTransfer.setData("id", id);
+  };
+
+  const onDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const onDrop = (e, cat) => {
+    let id = e.dataTransfer.getData("id");
+    const newArray = [...arr];
+    let tasks = newArray.map((task) => {
+      const objCopy = { ...task };
+      if (task.id === +id) {
+        objCopy.column = cat;
+      }
+
+      return objCopy;
+    });
+    dispatch(addInputActions.value(tasks));
+    // setArr(tasks);
+  };
+
+  var tasks = {
+    Not_started: [" "],
+    In_progress: [" "],
+    Review: [" "],
+    Completed: [" "],
+    Deployed: [],
+  };
+
+  arr.forEach((d, i) => {
+    tasks[d.column].push(
+      <div
+        key={i}
+        onDragStart={(e) => onDragStart(e, d.id)}
+        draggable
+        className="draggable"
+      >
+        {/* <Draggable onStart={onDragStart} onDrag={onDragOver} onStop={onDrop}> */}
+        <input
+          style={{
+            cursor: "grabbing",
+          }}
+          onBlur={blur}
+          type="text"
+          id={i}
+          value={d.value}
+          className="form-control"
+          placeholder="Type here"
+          // placeholder={d.id}
+          onChange={handleChange}
+          autoComplete="off"
+        />
+        {/* </Draggable> */}
+      </div>
+    );
+  });
+
   return (
     <div>
       <div className="Header-Icon">
@@ -53,42 +125,77 @@ const DragNdrop = () => {
       </div>
 
       <div className="main">
-        <div className="col">
+        <div className="col1">
           <h5>Not Started</h5>
-          {arr.map((item, i) => {
-            console.log("item.value", item.value);
-            return (
-              <Draggable key={i}>
-                <div className="input">
-                  <input
-                    style={{
-                      cursor: "grabbing",
-                    }}
-                    onBlur={blur}
-                    type="text"
-                    id={i}
-                    value={item.value}
-                    className="form-control"
-                    placeholder="Type here"
-                    onChange={handleChange}
-                    autoComplete="off"
-                  />
-                </div>
-              </Draggable>
-            );
-          })}
+
+          <div
+            className="input"
+            onDragOver={(e) => onDragOver(e)}
+            draggable
+            onDrop={(e) => {
+              onDrop(e, "Not_started");
+            }}
+          >
+            {tasks.Not_started}
+          </div>
         </div>
-        <div className="col">
+
+        <div className="col2">
           <h5>In progress</h5>
+
+          <div
+            className="input"
+            onDragOver={(e) => onDragOver(e)}
+            draggable
+            onDrop={(e) => {
+              onDrop(e, "In_progress");
+            }}
+          >
+            {tasks.In_progress}
+          </div>
         </div>
-        <div className="col">
+
+        <div className="col3">
           <h5>Review</h5>
+          <div
+            className="input"
+            onDragOver={(e) => onDragOver(e)}
+            draggable
+            onDrop={(e) => {
+              onDrop(e, "Review");
+            }}
+          >
+            {tasks.Review}
+          </div>
         </div>
-        <div className="col">
+
+        <div className="col4">
           <h5>Completed</h5>
+          <div
+            className="input"
+            onDragOver={(e) => onDragOver(e)}
+            draggable
+            onDrop={(e) => {
+              onDrop(e, "Completed");
+            }}
+          >
+            {tasks.Completed}
+          </div>
         </div>
-        <div className="col">
+
+        <div className="col5">
           <h5>Deployed</h5>
+
+          <div
+            className="input"
+            onDragOver={(e) => onDragOver(e)}
+            draggable
+            onDrop={(e) => {
+              onDrop(e, "Deployed");
+            }}
+          >
+            {tasks.Deployed}
+          </div>
         </div>
       </div>
     </div>

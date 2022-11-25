@@ -1,17 +1,56 @@
 .main {
   display: flex;
-  justify-content: space-between;
+  /* border: 1px solid white; */
+  overflow: auto;
+  height: 100vh;
 }
 
-.col {
-  margin: 20px;
+.col1 {
+  width: 20%;
+  padding: 20px;
+  border-right: 0.1pt solid rgb(171, 248, 156);
+  overflow: auto;
 }
 
-.col h5 {
-  margin: 0;
-  padding: 0;
+.col2 {
+  width: 20%;
+  padding: 20px;
+  /* border: 1px solid white; */
+  border-right: 0.1pt solid rgb(171, 248, 156);
+
+  overflow: auto;
+}
+
+.col3 {
+  width: 20%;
+  padding: 20px;
+  /* border: 1px solid white; */
+  border-right: 0.1pt solid rgb(171, 248, 156);
+  overflow: auto;
+}
+
+.col4 {
+  width: 20%;
+  padding: 20px;
+  /* border: 1px solid white; */
+  border-right: 0.1pt solid rgb(171, 248, 156);
+  overflow: auto;
+}
+
+.col5 {
+  width: 20%;
+  padding: 20px;
+  /* border: 1px solid white; */
+  border-right: 0.1pt solid rgb(171, 248, 156);
+  overflow: auto;
+  height: 100vh;
 }
 
 .input {
   margin-top: 10px;
+  height: 80vh;
+}
+
+.draggable {
+  margin-top: 7px;
 }
