@@ -1,6 +1,5 @@
 .main {
   display: flex;
-  /* border: 1px solid white; */
   overflow: auto;
   height: 100vh;
 }
@@ -15,16 +14,13 @@
 .col2 {
   width: 20%;
   padding: 20px;
-  /* border: 1px solid white; */
   border-right: 0.1pt solid rgb(171, 248, 156);
-
   overflow: auto;
 }
 
 .col3 {
   width: 20%;
   padding: 20px;
-  /* border: 1px solid white; */
   border-right: 0.1pt solid rgb(171, 248, 156);
   overflow: auto;
 }
@@ -32,7 +28,6 @@
 .col4 {
   width: 20%;
   padding: 20px;
-  /* border: 1px solid white; */
   border-right: 0.1pt solid rgb(171, 248, 156);
   overflow: auto;
 }
@@ -40,7 +35,6 @@
 .col5 {
   width: 20%;
   padding: 20px;
-  /* border: 1px solid white; */
   border-right: 0.1pt solid rgb(171, 248, 156);
   overflow: auto;
   height: 100vh;

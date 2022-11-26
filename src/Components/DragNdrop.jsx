@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./DragNdrop.css";
-// import Draggable from "react-draggable";
 import { MdAddBox } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { addInputActions } from "../store/addInput-slice";
@@ -43,21 +42,6 @@ const DragNdrop = () => {
     dispatch(addInputActions.value(arr));
   };
 
-  // const dragger = (e) => {
-  //   console.log("dragger", e.x, e.y);
-  // };
-
-  // const stopper = (e) => {
-  //   console.log("stopper", e);
-  // };
-  // const starter = (e) => {
-  //   console.log("starter", e);
-  // };
-
-  // const position = (e) => {
-  //   console.log("position", e);
-  // };
-
   const onDragStart = (e, id) => {
     e.dataTransfer.setData("id", id);
   };
@@ -78,7 +62,6 @@ const DragNdrop = () => {
       return objCopy;
     });
     dispatch(addInputActions.value(tasks));
-    // setArr(tasks);
   };
 
   var tasks = {
@@ -97,7 +80,6 @@ const DragNdrop = () => {
         draggable
         className="draggable"
       >
-        {/* <Draggable onStart={onDragStart} onDrag={onDragOver} onStop={onDrop}> */}
         <input
           style={{
             cursor: "grabbing",
@@ -108,11 +90,9 @@ const DragNdrop = () => {
           value={d.value}
           className="form-control"
           placeholder="Type here"
-          // placeholder={d.id}
           onChange={handleChange}
           autoComplete="off"
         />
-        {/* </Draggable> */}
       </div>
     );
   });
