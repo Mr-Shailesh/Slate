@@ -9,10 +9,6 @@ import DragNdrop from "./DragNdrop";
 // import SlateDemo3 from "./SlateDemo3";
 
 const Body = () => {
-  // const [data, setData] = useState([]);
-
-  // console.log("data==========>>>", data);
-
   return (
     <div className="App-body">
       <DragNdrop />
