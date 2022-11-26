@@ -33,7 +33,6 @@ const DragNdrop = () => {
   const handleChange = (e) => {
     e.preventDefault();
     const index = e.target.id;
-    const { id, value } = e.target;
 
     let dem = [...arr];
     dem[index] = { ...dem[index], value: e.target.value };
